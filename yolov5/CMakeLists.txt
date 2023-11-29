@@ -24,14 +24,15 @@ find_package(TensorRT REQUIRED)
 #include_directories(/home/nvidia/TensorRT-8.2.1.8/include/)
 #link_directories(/home/nvidia/TensorRT-8.2.5.1/lib/)
 
-#源文件设置
+#源文件设置--添加项目源文件目录到头文件搜索路径中
 include_directories(${PROJECT_SOURCE_DIR}/src/)
 include_directories(${PROJECT_SOURCE_DIR}/plugin/)
+#file(GLOB_RECURSE 变量名 ...)用于获取指定目录下所有符合指定匹配模式的文件
 file(GLOB_RECURSE SRCS ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/src/*.cu)
 file(GLOB_RECURSE PLUGIN_SRCS ${PROJECT_SOURCE_DIR}/plugin/*.cu)
 
 add_library(myplugins SHARED ${PLUGIN_SRCS})
-target_link_libraries(myplugins nvinfer cudart)
+target_link_libraries(myplugins nvinfer cudart)#链接myplugins、nvinfer和cudart
 
 find_package(OpenCV)
 include_directories(${OpenCV_INCLUDE_DIRS})

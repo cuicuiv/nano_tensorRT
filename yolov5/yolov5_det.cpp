@@ -12,8 +12,9 @@
 using namespace nvinfer1;
 
 static Logger gLogger;
+//定义输出大小的常量
 const static int kOutputSize = kMaxNumOutputBbox * sizeof(Detection) / sizeof(float) + 1;
-
+//解析命令行参数
 bool parse_args(int argc, char** argv, std::string& wts, std::string& engine, bool& is_p6, float& gd, float& gw, std::string& img_dir) {
   if (argc < 4) return false;
   if (std::string(argv[1]) == "-s" && (argc == 5 || argc == 7)) {
@@ -53,6 +54,7 @@ bool parse_args(int argc, char** argv, std::string& wts, std::string& engine, bo
   return true;
 }
 
+//准备输入输出缓冲区
 void prepare_buffers(ICudaEngine* engine, float** gpu_input_buffer, float** gpu_output_buffer, float** cpu_output_buffer) {
   assert(engine->getNbBindings() == 2);
   // In order to bind the buffers, we need to know the names of the input and output tensors.
@@ -67,13 +69,13 @@ void prepare_buffers(ICudaEngine* engine, float** gpu_input_buffer, float** gpu_
 
   *cpu_output_buffer = new float[kBatchSize * kOutputSize];
 }
-
+//推理过程
 void infer(IExecutionContext& context, cudaStream_t& stream, void** gpu_buffers, float* output, int batchsize) {
   context.enqueue(batchsize, gpu_buffers, stream, nullptr);
   CUDA_CHECK(cudaMemcpyAsync(output, gpu_buffers[1], batchsize * kOutputSize * sizeof(float), cudaMemcpyDeviceToHost, stream));
   cudaStreamSynchronize(stream);
 }
-
+//序列化TensorRT引擎
 void serialize_engine(unsigned int max_batchsize, bool& is_p6, float& gd, float& gw, std::string& wts_name, std::string& engine_name) {
   // Create builder
   IBuilder* builder = createInferBuilder(gLogger);
@@ -87,7 +89,7 @@ void serialize_engine(unsigned int max_batchsize, bool& is_p6, float& gd, float&
     engine = build_det_engine(max_batchsize, builder, config, DataType::kFLOAT, gd, gw, wts_name);
   }
   assert(engine != nullptr);
-
+  
   // Serialize the engine
   IHostMemory* serialized_engine = engine->serialize();
   assert(serialized_engine != nullptr);
@@ -106,7 +108,7 @@ void serialize_engine(unsigned int max_batchsize, bool& is_p6, float& gd, float&
   serialized_engine->destroy();
   builder->destroy();
 }
-
+//反序列化TensorRT引擎
 void deserialize_engine(std::string& engine_name, IRuntime** runtime, ICudaEngine** engine, IExecutionContext** context) {
   std::ifstream file(engine_name, std::ios::binary);
   if (!file.good()) {
@@ -139,7 +141,7 @@ int main(int argc, char** argv) {
   bool is_p6 = false;
   float gd = 0.0f, gw = 0.0f;
   std::string img_dir;
-
+  //解析命令行
   if (!parse_args(argc, argv, wts_name, engine_name, is_p6, gd, gw, img_dir)) {
     std::cerr << "arguments not right!" << std::endl;
     std::cerr << "./yolov5_det -s [.wts] [.engine] [n/s/m/l/x/n6/s6/m6/l6/x6 or c/c6 gd gw]  // serialize model to plan file" << std::endl;
@@ -147,13 +149,13 @@ int main(int argc, char** argv) {
     return -1;
   }
 
-  // Create a model using the API directly and serialize it to a file
+  // 直接使用API创建模型并将其序列化为文件
   if (!wts_name.empty()) {
     serialize_engine(kBatchSize, is_p6, gd, gw, wts_name, engine_name);
     return 0;
   }
 
-  // Deserialize the engine from file
+  // 从文件反序列化引擎
   IRuntime* runtime = nullptr;
   ICudaEngine* engine = nullptr;
   IExecutionContext* context = nullptr;
@@ -161,7 +163,7 @@ int main(int argc, char** argv) {
   cudaStream_t stream;
   CUDA_CHECK(cudaStreamCreate(&stream));
 
-  // Init CUDA preprocessing
+  // Init CUDA preprocessingCUDA预处理的初始化
   cuda_preprocess_init(kMaxInputImageSize);
 
   // Prepare cpu and gpu buffers
@@ -209,7 +211,7 @@ int main(int argc, char** argv) {
     }
   }
 
-  // Release stream and buffers
+  // Release stream and buffers释放资源
   cudaStreamDestroy(stream);
   CUDA_CHECK(cudaFree(gpu_buffers[0]));
   CUDA_CHECK(cudaFree(gpu_buffers[1]));

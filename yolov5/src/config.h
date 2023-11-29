@@ -45,11 +45,13 @@ constexpr static float kIgnoreThresh = 0.1f;
  * --------------------------------------------------------*/
 
 // NMS overlapping thresh and final detection confidence thresh
+//NMS重叠阈值和最终检测置信度阈值
 const static float kNmsThresh = 0.45f;
 const static float kConfThresh = 0.5f;
 
 const static int kGpuId = 0;
 
 // If your image size is larger than 4096 * 3112, please increase this value
+//如果你的图片大于4096 * 3112，请增大这个值
 const static int kMaxInputImageSize = 4096 * 3112;
 

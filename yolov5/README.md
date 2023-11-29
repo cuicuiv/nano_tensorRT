@@ -1,65 +1,9 @@
-# YOLOv5
-
-TensorRTx inference code base for [ultralytics/yolov5](https://github.com/ultralytics/yolov5).
-
-## Contributors
-
-<a href="https://github.com/wang-xinyu"><img src="https://avatars.githubusercontent.com/u/15235574?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/BaofengZan"><img src="https://avatars.githubusercontent.com/u/20653176?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/upczww"><img src="https://avatars.githubusercontent.com/u/16224249?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/cesarandreslopez"><img src="https://avatars.githubusercontent.com/u/14029177?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/makaveli10"><img src="https://avatars.githubusercontent.com/u/39617050?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/priteshgohil"><img src="https://avatars.githubusercontent.com/u/43172056?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/rymzt"><img src="https://avatars.githubusercontent.com/u/3270954?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/AsakusaRinne"><img src="https://avatars.githubusercontent.com/u/47343601?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/freedenS"><img src="https://avatars.githubusercontent.com/u/26213470?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/smarttowel"><img src="https://avatars.githubusercontent.com/u/1128528?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/wwqgtxx"><img src="https://avatars.githubusercontent.com/u/582584?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/adujardin"><img src="https://avatars.githubusercontent.com/u/12609780?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/jow905"><img src="https://avatars.githubusercontent.com/u/19189198?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/CristiFati"><img src="https://avatars.githubusercontent.com/u/29705787?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/HaiyangPeng"><img src="https://avatars.githubusercontent.com/u/46739135?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/Armassarion"><img src="https://avatars.githubusercontent.com/u/33727511?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/xupengao"><img src="https://avatars.githubusercontent.com/u/51817015?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/liuqi123123"><img src="https://avatars.githubusercontent.com/u/46275888?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/ASONG0506"><img src="https://avatars.githubusercontent.com/u/26050577?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/bobo0810"><img src="https://avatars.githubusercontent.com/u/26057879?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/Silmeria112"><img src="https://avatars.githubusercontent.com/u/16464837?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/LW-SCU"><img src="https://avatars.githubusercontent.com/u/28128257?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/AdanWang"><img src="https://avatars.githubusercontent.com/u/32757980?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/triple-Mu"><img src="https://avatars.githubusercontent.com/u/92794867?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/xiang-wuu"><img src="https://avatars.githubusercontent.com/u/107029401?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/uyolo1314"><img src="https://avatars.githubusercontent.com/u/101853326?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/Rex-LK"><img src="https://avatars.githubusercontent.com/u/74702576?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/PrinceP"><img src="https://avatars.githubusercontent.com/u/10251537?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/hky3535"><img src="https://avatars.githubusercontent.com/u/126926285?s=48&v=4" width="40px;" alt=""/></a>
-<a href="https://github.com/CharlesHuan"><img src="https://avatars.githubusercontent.com/u/47875698?s=48&v=4" width="40px;" alt=""/></a>
-
-## Different versions of yolov5
-
-Currently, we support yolov5 v1.0, v2.0, v3.0, v3.1, v4.0, v5.0, v6.0, v6.2, v7.0
-
-- For yolov5 v7.0, download .pt from [yolov5 release v7.0](https://github.com/ultralytics/yolov5/releases/tag/v7.0), `git clone -b v7.0 https://github.com/ultralytics/yolov5.git` and `git clone -b yolov5-v7.0 https://github.com/wang-xinyu/tensorrtx.git`, then follow how-to-run in [tensorrtx/yolov5-v7.0](https://github.com/wang-xinyu/tensorrtx/tree/yolov5-v7.0/yolov5)
-- For yolov5 v6.2, download .pt from [yolov5 release v6.2](https://github.com/ultralytics/yolov5/releases/tag/v6.2), `git clone -b v6.2 https://github.com/ultralytics/yolov5.git` and `git clone -b yolov5-v6.2 https://github.com/wang-xinyu/tensorrtx.git`, then follow how-to-run in [tensorrtx/yolov5-v6.2](https://github.com/wang-xinyu/tensorrtx/tree/yolov5-v6.2/yolov5)
-- For yolov5 v6.0, download .pt from [yolov5 release v6.0](https://github.com/ultralytics/yolov5/releases/tag/v6.0), `git clone -b v6.0 https://github.com/ultralytics/yolov5.git` and `git clone -b yolov5-v6.0 https://github.com/wang-xinyu/tensorrtx.git`, then follow how-to-run in [tensorrtx/yolov5-v6.0](https://github.com/wang-xinyu/tensorrtx/tree/yolov5-v6.0/yolov5).
-- For yolov5 v5.0, download .pt from [yolov5 release v5.0](https://github.com/ultralytics/yolov5/releases/tag/v5.0), `git clone -b v5.0 https://github.com/ultralytics/yolov5.git` and `git clone -b yolov5-v5.0 https://github.com/wang-xinyu/tensorrtx.git`, then follow how-to-run in [tensorrtx/yolov5-v5.0](https://github.com/wang-xinyu/tensorrtx/tree/yolov5-v5.0/yolov5).
-- For yolov5 v4.0, download .pt from [yolov5 release v4.0](https://github.com/ultralytics/yolov5/releases/tag/v4.0), `git clone -b v4.0 https://github.com/ultralytics/yolov5.git` and `git clone -b yolov5-v4.0 https://github.com/wang-xinyu/tensorrtx.git`, then follow how-to-run in [tensorrtx/yolov5-v4.0](https://github.com/wang-xinyu/tensorrtx/tree/yolov5-v4.0/yolov5).
-- For yolov5 v3.1, download .pt from [yolov5 release v3.1](https://github.com/ultralytics/yolov5/releases/tag/v3.1), `git clone -b v3.1 https://github.com/ultralytics/yolov5.git` and `git clone -b yolov5-v3.1 https://github.com/wang-xinyu/tensorrtx.git`, then follow how-to-run in [tensorrtx/yolov5-v3.1](https://github.com/wang-xinyu/tensorrtx/tree/yolov5-v3.1/yolov5).
-- For yolov5 v3.0, download .pt from [yolov5 release v3.0](https://github.com/ultralytics/yolov5/releases/tag/v3.0), `git clone -b v3.0 https://github.com/ultralytics/yolov5.git` and `git clone -b yolov5-v3.0 https://github.com/wang-xinyu/tensorrtx.git`, then follow how-to-run in [tensorrtx/yolov5-v3.0](https://github.com/wang-xinyu/tensorrtx/tree/yolov5-v3.0/yolov5).
-- For yolov5 v2.0, download .pt from [yolov5 release v2.0](https://github.com/ultralytics/yolov5/releases/tag/v2.0), `git clone -b v2.0 https://github.com/ultralytics/yolov5.git` and `git clone -b yolov5-v2.0 https://github.com/wang-xinyu/tensorrtx.git`, then follow how-to-run in [tensorrtx/yolov5-v2.0](https://github.com/wang-xinyu/tensorrtx/tree/yolov5-v2.0/yolov5).
-- For yolov5 v1.0, download .pt from [yolov5 release v1.0](https://github.com/ultralytics/yolov5/releases/tag/v1.0), `git clone -b v1.0 https://github.com/ultralytics/yolov5.git` and `git clone -b yolov5-v1.0 https://github.com/wang-xinyu/tensorrtx.git`, then follow how-to-run in [tensorrtx/yolov5-v1.0](https://github.com/wang-xinyu/tensorrtx/tree/yolov5-v1.0/yolov5).
-
-## Config
-
-- Choose the YOLOv5 sub-model n/s/m/l/x/n6/s6/m6/l6/x6 from command line arguments.
-- Other configs please check [src/config.h](src/config.h)
 
 ## Build and Run
 
 ### Detection
 
 1. generate .wts from pytorch with .pt, or download .wts from model zoo
-
 ```
 git clone -b v7.0 https://github.com/ultralytics/yolov5.git
 git clone -b yolov5-v7.0 https://github.com/wang-xinyu/tensorrtx.git
