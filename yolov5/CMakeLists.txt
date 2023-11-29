@@ -18,7 +18,7 @@ include_directories(/usr/local/cuda/include)
 link_directories(/usr/local/cuda/lib64)
 # tensorrt
 # TODO(Call for PR): make TRT path configurable from command line
-
+#TensorRT环境配置
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 find_package(TensorRT REQUIRED)
 #include_directories(/home/nvidia/TensorRT-8.2.1.8/include/)
